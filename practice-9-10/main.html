@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список студентов</title>
+    <script>
+        class Student {
+            constructor(fio, datarojdeniya, elektronka, godPostupleniya, kursik, nomerGruppy, otsenkaLeto, otsenkaZima) {
+                this.fio = fio;
+                this.datarojdeniya = new Date(datarojdeniya);
+                this.elektronka = elektronka;
+                this.godPostupleniya = godPostupleniya;
+                this.kursik = kursik;
+                this.nomerGruppy = nomerGruppy;
+                this.otsenkaLeto = otsenkaLeto;
+                this.otsenkaZima = otsenkaZima;
+            }
+        }
+
+        const studiki = [
+            new Student("Быстриков Илья Олегович", "2000-01-15", "bistrikov@gmail.com", 2018, 4, "БСБО-01-22", [4, 5, 3], [3, 4, 3]),
+            new Student("Черенков Никита Юрьевич", "1999-05-22", "cherenkov@gmail.com", 2017, 5, "БСБО-01-22", [2, 3, 4], [4, 3, 3]),
+            new Student("Морозов Максим Александрович", "2001-03-10", "morozov@gmail.com", 2019, 3, "БСБО-01-22", [5, 4, 5], [5, 4, 5]),
+            new Student("Соболев Кирилл Алексеевич", "1998-12-30", "sobolev@gmail.com", 2016, 6, "БСБО-01-22", [5, 5, 4], [5, 5, 5]),
+            new Student("Пропастин Евгений Фёдорович", "2000-07-25", "propastin@gmail.com", 2018, 4, "БСБО-01-22", [4, 5, 4], [4, 4, 3]),
+            new Student("Клюшкин Степан Алексеевич", "2000-11-11", "klushkin@gmail.com", 2018, 4, "БСБО-01-22", [3, 4, 5], [5, 4, 4]),
+            new Student("Буторин Кирилл Викторович", "2002-02-20", "butorin@gmail.com", 2020, 2, "БСБО-01-22", [5, 5, 3], [4, 3, 5]),
+            new Student("Коробко Дмитрий Сергеевич", "1999-09-09", "korobko@gmail.com", 2017, 5, "БСБО-01-22", [4, 3, 5], [3, 3, 3]),
+            new Student("Вартанян Артём Михайлович", "2001-06-06", "vartanyan@gmail.com", 2019, 3, "БСБО-01-22", [5, 4, 4], [4, 5, 4]),
+            new Student("Кирьянов Владимир Александрович", "2000-04-04", "kiryanov@gmail.com", 2018, 4, "БСБО-01-22", [2, 4, 5], [3, 4, 4])
+        ];
+
+        function sortirovkaPoDateRojdeniya() {
+            studiki.sort((a, b) => a.datarojdeniya - b.datarojdeniya);
+            otobrazitStudentov();
+        }
+
+        function otobrazitStudentov() {
+            const spisokStudentov = document.getElementById("spisok-studentov");
+            spisokStudentov.innerHTML = ""; 
+
+            studiki.forEach(student => {
+                const li = document.createElement("li");
+                li.textContent = `${student.fio}, Дата рождения: ${student.datarojdeniya.toLocaleDateString()}, Email: ${student.elektronka}, Год поступления: ${student.godPostupleniya}, Курс: ${student.kursik}, Номер группы: ${student.nomerGruppy}, Летняя сессия: ${student.otsenkaLeto.join(", ")}, Зимняя сессия: ${student.otsenkaZima.join(", ")}`;
+                spisokStudentov.appendChild(li);
+            });
+        }
+
+        function addStudent() {
+            const fio = document.getElementById("fio").value.trim();
+            const datarojdeniya = document.getElementById("datarojdeniya").value.trim();
+            const elektronka = document.getElementById("elektronka").value.trim();
+            const godPostupleniya = document.getElementById("godPostupleniya").value.trim();
+            const kursik = document.getElementById("kursik").value.trim();
+            const nomerGruppy = document.getElementById("nomerGruppy").value.trim();
+            const otsenkaLetoStr = document.getElementById("otsenkaLeto").value.trim();
+            const otsenkaZimaStr = document.getElementById("otsenkaZima").value.trim();
+
+            // Проверка на пустые поля
+            if (!fio || !datarojdeniya || !elektronka || !godPostupleniya || !kursik || !nomerGruppy || !otsenkaLetoStr || !otsenkaZimaStr) {
+                alert("Какие-то неполадки с полями.");
+                return;
+            }
+
+            const otsenkaLeto = otsenkaLetoStr.split(",").map(Number);
+            const otsenkaZima = otsenkaZimaStr.split(",").map(Number);
+
+            const newStudent = new Student(fio, datarojdeniya, elektronka, parseInt(godPostupleniya), parseInt(kursik), nomerGruppy, otsenkaLeto, otsenkaZima);
+            studiki.push(newStudent);
+
+            document.getElementById("fio").value = "";
+            document.getElementById("datarojdeniya").value = "";
+            document.getElementById("elektronka").value = "";
+            document.getElementById("godPostupleniya").value = "";
+            document.getElementById("kursik").value = "";
+            document.getElementById("nomerGruppy").value = "";
+            document.getElementById("otsenkaLeto").value = "";
+            document.getElementById("otsenkaZima").value = "";
+
+            otobrazitStudentov();
+        }
+
+        function init() {
+            otobrazitStudentov();
+        }
+
+        window.onload = init;
+    </script>
+</head>
+<body>
+    <h1>Список студентов</h1>
+    <ul id="spisok-studentov"></ul>
+    <button onclick="sortirovkaPoDateRojdeniya()">Отсортировать по дате рождения</button>
+
+    <h2>Добавить нового студента</h2>
+    <label for="fio">ФИО:</label>
+    <input type="text" id="fio" required><br>
+
+    <label for="datarojdeniya">Дата рождения:</label>
+    <input type="date" id="datarojdeniya" required><br>
+
+    <label for="elektronka">Email:</label>
+    <input type="email" id="elektronka" required><br>
+
+    <label for="godPostupleniya">Год поступления:</label>
+    <input type="number" id="godPostupleniya" required><br>
+
+    <label for="kursik">Курс:</label>
+    <input type="number" id="kursik" required><br>
+
+    <label for="nomerGruppy">Номер группы:</label>
+    <input type="text" id="nomerGruppy" required><br>
+
+    <label for="otsenkaLeto">Оценки за летнюю сессию (через запятую):</label>
+    <input type="text" id="otsenkaLeto" required><br>
+
+    <label for="otsenkaZima">Оценки за зимнюю сессию (через запятую):</label>
+    <input type="text" id="otsenkaZima" required><br>
+
+    <button onclick="addStudent()">Добавить студента</button>
+</body>
+</html>
