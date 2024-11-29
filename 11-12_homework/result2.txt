@@ -1,0 +1,81 @@
+404:
+2
+[10/Oct/2023:13:45:34 +0300] "GET /nonexistent.html HTTP/1.1" 404 0 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
+[10/Oct/2023:13:45:52 +0300] "GET /nonexistent.html HTTP/1.1" 404 0 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+
+User-Agent:
+51
+3 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36
+2 - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/110.0
+1 - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/110.0
+3 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36
+1 - Mozilla/5.0 (iPad; CPU OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1
+2 - curl/7.84.0
+1 - Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/110.0
+1 - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36
+1 - wget 1.21.3
+1 - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/109.0
+1 - curl/7.83.1
+1 - Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1
+1 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36
+1 - wget 1.20.3
+1 - Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)
+1 - Mozilla/5.0 (iPad; CPU OS 15_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.5 Mobile/15E148 Safari/604.1
+2 - curl/7.79.1
+2 - Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+1 - Mozilla/5.0 (Android 13; Mobile; rv:102.0) Gecko/102.0 Firefox/102.0
+1 - wget 1.19.4
+1 - Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36
+1 - Mozilla/5.0 (Linux; Android 12; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36
+1 - curl/7.82.0
+2 - Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+1 - Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12
+2 - wget 1.18.4
+1 - Mozilla/5.0 (Linux; Android 13; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36
+1 - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Safari/605.1.15
+1 - python-requests/2.31.0
+1 - Mozilla/5.0 (iPhone; CPU iPhone OS 15_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Mobile/15E148 Safari/604.1
+1 - Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+1 - okhttp/4.10.0
+1 - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/117.0
+1 - curl/7.78.0
+1 - Node-Fetch/1.0
+1 - Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36
+1 - axios/1.4.0
+1 - Go-http-client/1.1
+1 - Wget/1.21.3
+1 - Apache-HttpClient/4.5.13 (Java/17.0.7)
+1 - Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0
+1 - curl/7.64.0
+1 - libcurl-agent/7.88.1
+1 - Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)
+1 - okhttp/3.14.9
+1 - python-requests/2.28.1
+1 - Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.10) Gecko/2009042316 Firefox/3.0.10
+1 - axios/0.27.2
+1 - Node-Fetch/2.6.7
+1 - Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101 Firefox/91.0
+21 - Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+
+POST:
+19
+[10/Oct/2023:13:45:28 +0300] "POST /submit HTTP/1.1" 201 150 "http://example.com/form" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+[10/Oct/2023:13:45:26 +0300] "POST /api/data HTTP/1.1" 200 567 "http://api.example.com" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+[10/Oct/2023:13:45:29 +0300] "POST /login HTTP/1.1" 200 123 "http://example.com/login_page" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+[10/Oct/2023:13:45:32 +0300] "POST /comments HTTP/1.1" 201 321 "http://example.com/blog/post" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/109.0"
+[10/Oct/2023:13:45:35 +0300] "POST /search HTTP/1.1" 200 789 "http://example.com/search_results" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+[10/Oct/2023:13:45:38 +0300] "POST /upload HTTP/1.1" 200 1000 "http://example.com/upload_page" "Mozilla/5.0 (iPad; CPU OS 15_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.5 Mobile/15E148 Safari/604.1"
+[10/Oct/2023:13:45:41 +0300] "POST /register HTTP/1.1" 201 256 "http://example.com/registration" "Mozilla/5.0 (Android 13; Mobile; rv:102.0) Gecko/102.0 Firefox/102.0"
+[10/Oct/2023:13:45:44 +0300] "POST /profile HTTP/1.1" 200 512 "http://example.com/profile_page" "Mozilla/5.0 (Linux; Android 12; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36"
+[10/Oct/2023:13:45:47 +0300] "POST /feedback HTTP/1.1" 200 200 "http://example.com/feedback_form" "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12"
+[10/Oct/2023:13:45:35 +0300] "POST /submit HTTP/1.1" 201 0 "-" "Mozilla/5.0 (Linux; Android 13; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36"
+[10/Oct/2023:13:45:38 +0300] "POST /data HTTP/1.1" 200 1024 "http://example.org/form" "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko"
+[10/Oct/2023:13:45:41 +0300] "POST /login HTTP/1.1" 302 0 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)"
+[10/Oct/2023:13:45:44 +0300] "POST /comment HTTP/1.1" 201 0 "-" "curl/7.78.0"
+[10/Oct/2023:13:45:47 +0300] "POST /upload HTTP/1.1" 200 0 "-" "axios/1.4.0"
+[10/Oct/2023:13:45:50 +0300] "POST /register HTTP/1.1" 201 0 "-" "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+[10/Oct/2023:13:45:53 +0300] "POST /feedback HTTP/1.1" 200 0 "-" "curl/7.64.0"
+[10/Oct/2023:13:45:56 +0300] "POST /order HTTP/1.1" 201 0 "-" "okhttp/3.14.9"
+[10/Oct/2023:13:45:59 +0300] "POST /search_ajax HTTP/1.1" 200 512 "-" "axios/0.27.2"
+[10/Oct/2023:13:46:02 +0300] "POST /form_data HTTP/1.1" 200 0 "-" "curl/7.79.1"
+
