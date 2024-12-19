@@ -1,0 +1,102 @@
+/* Основные настройки */
+body {
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1e1e1e, #111111);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Фон с декоративными элементами */
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://i.pinimg.com/originals/9a/7b/bc/9a7bbce38f8874f1bbcb584926efa96b.jpg') no-repeat center center/cover;
+    opacity: 0.5;
+    z-index: -1;
+  }
+  
+  /* Контейнер панелей студента */
+  #student-container {
+    width: 600px;
+    padding: 40px;
+    background: rgba(18, 18, 18, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    margin: auto;
+    text-align: center;
+    color: #fff;
+  }
+  
+  /* Заголовок */
+  #student-container h1 {
+    font-size: 36px;
+    color: #e63946;
+    margin-bottom: 20px;
+  }
+  
+  #student-container h2 {
+    font-size: 24px;
+    color: #ddd;
+    margin: 20px 0;
+  }
+  
+  #student-container p {
+    font-size: 16px;
+    color: #ccc;
+    margin-bottom: 10px;
+  }
+  
+  /* Список оценок */
+  #student-grades {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 16px;
+    color: #ddd;
+  }
+  
+  /* Личная карточка */
+  #student-card {
+    background: #2c2c2c;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    margin-bottom: 20px;
+  }
+  
+  #student-card p {
+    font-size: 16px;
+    color: #ccc;
+  }
+  
+  #student-card strong {
+    color: #e63946;
+  }
+  
+  /* Кнопка выхода */
+  button {
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(145deg, #e63946, #d62828);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+  }
+  

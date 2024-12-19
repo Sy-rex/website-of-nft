@@ -1,0 +1,61 @@
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style_student.css">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+  <title>Панель студента</title>
+</head>
+<body>
+  <!-- Элемент для фона -->
+  <div class="background"></div>
+
+  <div id="student-container">
+    <h1>Панель студента</h1>
+    <p>Добро пожаловать, <span id="student-name"></span>!</p>
+    <h2>Ваши оценки</h2>
+    <ul id="student-grades"></ul>
+    <h2>Ваша личная карточка</h2>
+    <div id="student-card">
+      <p><strong>Ф.И.О.:</strong> <span id="student-fullname"></span></p>
+      <p><strong>Группа:</strong> <span id="student-group"></span></p>
+      <p><strong>ID:</strong> <span id="student-id"></span></p>
+      <p><strong>Средний балл:</strong> <span id="student-average"></span></p>
+    </div>
+    <button onclick="logout()">Выйти</button>
+  </div>
+  
+  <script>
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    if (!currentUser || currentUser.role !== 'student') {
+      window.location.href = 'index.html';
+    }
+
+    document.getElementById('student-name').textContent = currentUser.name;
+    document.getElementById('student-fullname').textContent = currentUser.name;
+    document.getElementById('student-group').textContent = currentUser.group;
+    document.getElementById('student-id').textContent = currentUser.id;
+    document.getElementById('student-average').textContent = calculateAverageGrade(currentUser.grades);
+
+    const gradesList = document.getElementById('student-grades');
+    gradesList.innerHTML = '';
+    currentUser.grades.forEach(grade => {
+      const li = document.createElement('li');
+      li.textContent = `Сессия ${grade.session}: ${grade.subject} - ${grade.grade}`;
+      gradesList.appendChild(li);
+    });
+
+    function calculateAverageGrade(grades) {
+      if (!grades || grades.length === 0) return 'N/A';
+      const total = grades.reduce((sum, grade) => sum + parseFloat(grade.grade || 0), 0);
+      return (total / grades.length).toFixed(2);
+    }
+
+    function logout() {
+      localStorage.removeItem('currentUser');
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

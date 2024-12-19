@@ -1,0 +1,142 @@
+/* Основные настройки */
+body {
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1e1e1e, #111111);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Фон с декоративными элементами */
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://i.pinimg.com/originals/9a/7b/bc/9a7bbce38f8874f1bbcb584926efa96b.jpg') no-repeat center center/cover;
+    opacity: 0.5;
+    z-index: -1;
+  }
+  
+  /* Контейнер преподавателя */
+  #teacher-container {
+    width: 450px;
+    padding: 40px;
+    background: rgba(18, 18, 18, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    margin: auto;
+    text-align: center;
+    color: #fff;
+    max-height: 90vh; /* Ограничиваем максимальную высоту */
+    overflow-y: auto; /* Разрешаем вертикальную прокрутку */
+  }
+  
+  /* Заголовок */
+  #teacher-container h1 {
+    font-size: 36px;
+    color: #e63946;
+    margin: 0 0 10px;
+  }
+  
+  #teacher-container p {
+    font-size: 16px;
+    color: #ccc;
+    margin: 0 0 30px;
+  }
+  
+  /* Формы и поля ввода */
+  label {
+    font-size: 14px;
+    color: #ddd;
+    display: block;
+    margin-bottom: 8px;
+    text-align: left;
+  }
+  
+  select, input {
+    width: calc(100% - 24px);
+    max-width: 100%;
+    padding: 12px;
+    background: #2c2c2c;
+    border: 1px solid #444;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+  
+  /* Кнопки */
+  button {
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(145deg, #e63946, #d62828);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  button:hover {
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+  }
+
+  /* Стили для полосы прокрутки */
+  ::-webkit-scrollbar {
+    width: 10px;  /* Ширина полосы прокрутки */
+    height: 10px; /* Высота горизонтальной полосы прокрутки */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #333;  /* Цвет фона области прокрутки */
+    border-radius: 5px; /* Закругление углов области прокрутки */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(145deg, #e63946, #d62828); /* Градиент для ползунка */
+    border-radius: 5px; /* Закругление углов ползунка */
+    border: 2px solid #111; /* Добавляем темную границу для выделения */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(145deg, #d62828, #e63946); /* Смена цвета при наведении */
+    cursor: pointer;
+  }
+  
+  ::-webkit-scrollbar-corner {
+    background: #111;  /* Цвет угла, где пересекаются вертикальная и горизонтальная полосы прокрутки */
+  }
+  
+  /* Список оценок */
+  #grades-overview {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    max-height: 300px; /* Ограничиваем высоту области с оценками */
+    overflow-y: auto; /* Добавляем вертикальную прокрутку */
+  }
+  
+  #grades-overview li {
+    background-color: #333;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  /* Стили для кнопки сброса */
+  #teacher-container button:last-child {
+    background: #ff6347; /* Красный цвет для кнопки сброса */
+  }
+  

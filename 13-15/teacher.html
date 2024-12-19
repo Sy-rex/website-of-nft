@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style_teacher.css">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+  <title>Панель преподавателя</title>
+</head>
+<body>
+  <div class="background"></div>
+
+  <div id="teacher-container">
+    <h1>Панель преподавателя</h1>
+    <p>Добро пожаловать, <span id="teacher-name"></span>!</p>
+    
+    <h2>Управление оценками</h2>
+    <label for="session">Сессия:</label>
+    <select id="session">
+      <option value="1">Сессия 1</option>
+      <option value="2">Сессия 2</option>
+      <option value="3">Сессия 3</option>
+      <option value="4">Сессия 4</option>
+      <option value="5">Сессия 5</option>
+      <option value="6">Сессия 6</option>
+    </select>
+
+    <label for="student">Студент:</label>
+    <select id="student">
+      <!-- Студенты будут добавляться сюда -->
+    </select>
+
+    <label for="subject">Предмет:</label>
+    <input type="text" id="subject" placeholder="Введите предмет">
+
+    <label for="grade">Оценка:</label>
+    <input type="text" id="grade" placeholder="Введите оценку">
+
+    <button onclick="addGrade()">Добавить оценку</button>
+
+    <h3>Обзор оценок</h3>
+    <ul id="grades-overview"></ul>
+
+    <button onclick="resetGrades()">Сбросить все оценки</button>
+    <button onclick="logout()">Выйти</button>
+  </div>
+
+  <script>
+    // Получаем текущего преподавателя
+    const currentTeacher = JSON.parse(localStorage.getItem('currentUser'));
+
+    if (!currentTeacher || currentTeacher.role !== 'teacher') {
+      window.location.href = 'index.html';
+    }
+
+    document.getElementById('teacher-name').textContent = currentTeacher.name;
+
+    // Пример данных студентов (если их нет в localStorage, можно заменить на захардкоженные данные)
+    const students = JSON.parse(localStorage.getItem('studentPerformanceData')) || [];
+    const studentSelect = document.getElementById('student');
+
+    // Добавляем студентов в выпадающий список
+    if (students.length > 0) {
+      students.filter(u => u.role === 'student').forEach(student => {
+        const option = document.createElement('option');
+        option.value = student.username;
+        option.textContent = student.name;
+        studentSelect.appendChild(option);
+      });
+    } else {
+      console.log("No students found.");
+    }
+
+    // Функция для добавления оценки
+    function addGrade() {
+      const session = document.getElementById('session').value;
+      const studentUsername = document.getElementById('student').value;
+      const subject = document.getElementById('subject').value;
+      const grade = document.getElementById('grade').value;
+
+      const student = students.find(u => u.username === studentUsername);
+      if (student) {
+        student.grades.push({ session: parseInt(session), subject, grade });
+        localStorage.setItem('studentPerformanceData', JSON.stringify(students));
+        alert('Оценка добавлена успешно!');
+        updateGradesOverview();
+      } else {
+        alert("Студент не найден.");
+      }
+    }
+
+    // Функция для сброса всех оценок
+    function resetGrades() {
+      students.forEach(user => {
+        if (user.role === 'student') {
+          user.grades = [];
+        }
+      });
+      localStorage.setItem('studentPerformanceData', JSON.stringify(students));
+      alert('Все оценки были сброшены!');
+      updateGradesOverview();
+    }
+
+    // Обновление списка всех оценок
+    function updateGradesOverview() {
+      const gradesOverview = document.getElementById('grades-overview');
+      gradesOverview.innerHTML = '';
+
+      students.filter(u => u.role === 'student').forEach(student => {
+        student.grades.forEach(grade => {
+          const li = document.createElement('li');
+          li.textContent = `${student.name} - Сессия ${grade.session}: ${grade.subject} - ${grade.grade}`;
+          gradesOverview.appendChild(li);
+        });
+      });
+    }
+
+    // Функция выхода
+    function logout() {
+      // Удаляем текущего пользователя из localStorage
+      localStorage.removeItem('currentUser');
+      
+      // Редиректим на страницу входа
+      window.location.href = 'index.html';
+    }
+
+    updateGradesOverview();
+  </script>
+</body>
+</html>

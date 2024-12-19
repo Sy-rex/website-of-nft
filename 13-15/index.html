@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход в систему</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="background"></div>
+  <div id="login-container">
+    <div class="header">
+      <h1>С Новым Годом!</h1>
+      <p>Войдите в систему, чтобы продолжить</p>
+    </div>
+
+    <form>
+      <label for="role">Выберите вашу роль:</label>
+      <div class="radio-group">
+        <input type="radio" id="student-role" name="role" value="student" checked>
+        <label for="student-role">Студент</label>
+        <input type="radio" id="teacher-role" name="role" value="teacher">
+        <label for="teacher-role">Преподаватель</label>
+      </div>
+
+      <div class="input-group">
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" placeholder="Введите имя пользователя">
+      </div>
+      
+      <div class="input-group">
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" placeholder="Введите пароль">
+      </div>
+      
+      <button type="button" onclick="login()">Войти</button>
+    </form>
+  </div>
+
+  <script>
+    const studentData = [
+      { username: "student1", password: "student123", role: "student", name: "Иван Иванов", group: "A1", id: "S001", grades: [] },
+      { username: "student2", password: "student123", role: "student", name: "Мария Смирнова", group: "A2", id: "S002", grades: [] }
+    ];
+
+    const teacherData = [
+      { username: "teacher1", password: "teacher123", role: "teacher", name: "Дмитрий Белов", group: "", id: "T001", grades: [] },
+      { username: "teacher2", password: "teacher123", role: "teacher", name: "Екатерина Белая", group: "", id: "T002", grades: [] }
+    ];
+
+    if (!localStorage.getItem('studentPerformanceData')) {
+      localStorage.setItem('studentPerformanceData', JSON.stringify([...studentData, ...teacherData]));
+    }
+
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const role = document.querySelector('input[name="role"]:checked').value;
+      let users;
+
+      if (role === 'student') {
+        users = JSON.parse(localStorage.getItem('studentPerformanceData')).filter(u => u.role === 'student');
+      } else if (role === 'teacher') {
+        users = JSON.parse(localStorage.getItem('studentPerformanceData')).filter(u => u.role === 'teacher');
+      }
+
+      const user = users.find(u => u.username === username && u.password === password);
+
+      if (user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        if (user.role === 'student') {
+          window.location.href = 'student.html';
+        } else if (user.role === 'teacher') {
+          window.location.href = 'teacher.html';
+        }
+      } else {
+        alert('Неверное имя пользователя или пароль');
+      }
+    }
+  </script>
+</body>
+</html>
