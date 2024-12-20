@@ -1,4 +1,3 @@
-/* Основные настройки */
 body {
     font-family: 'Raleway', sans-serif;
     margin: 0;
@@ -12,7 +11,6 @@ body {
     position: relative;
   }
   
-  /* Фон с декоративными элементами */
   .background {
     position: absolute;
     top: 0;
@@ -24,7 +22,6 @@ body {
     z-index: -1;
   }
   
-  /* Контейнер панелей студента */
   #student-container {
     width: 600px;
     padding: 40px;
@@ -36,7 +33,6 @@ body {
     color: #fff;
   }
   
-  /* Заголовок */
   #student-container h1 {
     font-size: 36px;
     color: #e63946;
@@ -55,7 +51,6 @@ body {
     margin-bottom: 10px;
   }
   
-  /* Список оценок */
   #student-grades {
     list-style-type: none;
     padding-left: 0;
@@ -63,7 +58,6 @@ body {
     color: #ddd;
   }
   
-  /* Личная карточка */
   #student-card {
     background: #2c2c2c;
     padding: 20px;
@@ -81,7 +75,6 @@ body {
     color: #e63946;
   }
   
-  /* Кнопка выхода */
   button {
     padding: 14px 20px;
     font-size: 16px;

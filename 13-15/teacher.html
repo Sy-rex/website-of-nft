@@ -27,7 +27,6 @@
 
     <label for="student">Студент:</label>
     <select id="student">
-      <!-- Студенты будут добавляться сюда -->
     </select>
 
     <label for="subject">Предмет:</label>
@@ -46,7 +45,6 @@
   </div>
 
   <script>
-    // Получаем текущего преподавателя
     const currentTeacher = JSON.parse(localStorage.getItem('currentUser'));
 
     if (!currentTeacher || currentTeacher.role !== 'teacher') {
@@ -55,11 +53,9 @@
 
     document.getElementById('teacher-name').textContent = currentTeacher.name;
 
-    // Пример данных студентов (если их нет в localStorage, можно заменить на захардкоженные данные)
     const students = JSON.parse(localStorage.getItem('studentPerformanceData')) || [];
     const studentSelect = document.getElementById('student');
 
-    // Добавляем студентов в выпадающий список
     if (students.length > 0) {
       students.filter(u => u.role === 'student').forEach(student => {
         const option = document.createElement('option');
@@ -71,7 +67,6 @@
       console.log("No students found.");
     }
 
-    // Функция для добавления оценки
     function addGrade() {
       const session = document.getElementById('session').value;
       const studentUsername = document.getElementById('student').value;
@@ -89,7 +84,6 @@
       }
     }
 
-    // Функция для сброса всех оценок
     function resetGrades() {
       students.forEach(user => {
         if (user.role === 'student') {
@@ -101,7 +95,6 @@
       updateGradesOverview();
     }
 
-    // Обновление списка всех оценок
     function updateGradesOverview() {
       const gradesOverview = document.getElementById('grades-overview');
       gradesOverview.innerHTML = '';
@@ -115,12 +108,9 @@
       });
     }
 
-    // Функция выхода
     function logout() {
-      // Удаляем текущего пользователя из localStorage
       localStorage.removeItem('currentUser');
       
-      // Редиректим на страницу входа
       window.location.href = 'index.html';
     }
 
