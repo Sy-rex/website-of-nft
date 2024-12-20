@@ -15,10 +15,11 @@
     <ul id="student-grades"></ul>
     <h2>Ваша личная карточка</h2>
     <div id="student-card">
-      <p><strong>Ф.И.О.:</strong> <span id="student-fullname"></span></p>
+      <p><strong>ФИО:</strong> <span id="student-fullname"></span></p>
       <p><strong>Группа:</strong> <span id="student-group"></span></p>
-      <p><strong>ID:</strong> <span id="student-id"></span></p>
-      <p><strong>Средний балл:</strong> <span id="student-average"></span></p>
+      <p><strong>Шифр:</strong> <span id="student-id"></span></p>
+      <p><strong>Средний балл по сессиям:</strong></p>
+      <ul id="session-averages"></ul>
     </div>
     <button onclick="logout()">Выйти</button>
   </div>
@@ -34,7 +35,6 @@
     document.getElementById('student-fullname').textContent = currentUser.name;
     document.getElementById('student-group').textContent = currentUser.group;
     document.getElementById('student-id').textContent = currentUser.id;
-    document.getElementById('student-average').textContent = calculateAverageGrade(currentUser.grades);
 
     const gradesList = document.getElementById('student-grades');
     gradesList.innerHTML = '';
@@ -44,10 +44,34 @@
       gradesList.appendChild(li);
     });
 
-    function calculateAverageGrade(grades) {
-      if (!grades || grades.length === 0) return 'N/A';
-      const total = grades.reduce((sum, grade) => sum + parseFloat(grade.grade || 0), 0);
-      return (total / grades.length).toFixed(2);
+    const sessionAverages = calculateAverageGradeBySession(currentUser.grades);
+    const sessionAveragesList = document.getElementById('session-averages');
+    sessionAveragesList.innerHTML = '';
+    for (const [session, average] of Object.entries(sessionAverages)) {
+      const li = document.createElement('li');
+      li.textContent = `Сессия ${session}: ${average}`;
+      sessionAveragesList.appendChild(li);
+    }
+
+    function calculateAverageGradeBySession(grades) {
+      if (!grades || grades.length === 0) return {};
+
+      const sessionGrades = {};
+      grades.forEach(grade => {
+        const session = grade.session;
+        if (!sessionGrades[session]) {
+          sessionGrades[session] = [];
+        }
+        sessionGrades[session].push(parseFloat(grade.grade || 0));
+      });
+
+      const averages = {};
+      for (const session in sessionGrades) {
+        const total = sessionGrades[session].reduce((sum, grade) => sum + grade, 0);
+        averages[session] = (total / sessionGrades[session].length).toFixed(2);
+      }
+
+      return averages;
     }
 
     function logout() {
